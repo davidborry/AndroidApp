@@ -120,22 +120,26 @@ public class NewsDBHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         int id = 1;
         while(!cursor.isAfterLast()){
-            Article l = new Article(id);
-
-            l.setTitle(cursor.getString(0));
-            l.setBody(cursor.getString(1));
-            l.setAuthor(cursor.getString(2));
-            l.setDate(cursor.getString(3));
-            l.setCategory(cursor.getInt(4));
-            l.setMedia(cursor.getInt(5),cursor.getString(6));
-
-            Log.v("ARTICLE:",l.toString());
+            Article l = getArticle(id,cursor);
+           // Log.v("ARTICLE:",l.getMedia().getURL());
             articles.add(l);
-           // Log.v("DBDATA:",""+cursor.getInt(4));
             cursor.moveToNext();
         }
 
         cursor.close();
         return articles;
+    }
+
+    private Article getArticle(int id, Cursor cursor){
+        Article l = new Article(id);
+
+        l.setTitle(cursor.getString(0));
+        l.setBody(cursor.getString(1));
+        l.setAuthor(cursor.getString(2));
+        l.setDate(cursor.getString(3));
+        l.setCategory(cursor.getInt(4));
+        l.setMedia(cursor.getInt(5),cursor.getString(6));
+
+        return l;
     }
 }

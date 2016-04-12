@@ -12,7 +12,7 @@ public class Article {
     private Category category;
     private Media media;
 
-    private enum Category{
+    public enum Category{
         POLITICS,
         SOCIETY;
 
@@ -28,7 +28,7 @@ public class Article {
         }
     };
 
-    private enum Media{
+    public enum Media{
         IMAGE,
         VIDEO;
         private String URL;
