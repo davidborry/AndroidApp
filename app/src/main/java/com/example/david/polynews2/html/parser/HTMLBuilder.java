@@ -49,8 +49,27 @@ public class HTMLBuilder {
         content+="<p id=\"date\">" + article.getDate() + "</p>\n";
         content+="<p id=\"category\">"+article.getCategory().toString()+"</p>\n";
         content+="<p id=\"content\">" + article.getBody() + "</p>\n";
-        content+="<a id=\"media\" href=\""+article.getMedia().getURL()+"\">MEDIA</a>\n";
+        makeMedia();
+        //content+="<a id=\"media\" href=\""+article.getMedia().getURL()+"\">MEDIA</a>\n";
         content+="</body>\n";
+        Log.v("CONTENTARTICLE:",content);
+
+    }
+
+    public void makeMedia(){
+        if(article.getMedia() == Article.Media.IMAGE)
+            content+="<img src=\""+article.getMedia().getURL()+"\" />\n";
+
+        else
+            makeVideo();
+    }
+
+    public void makeVideo(){
+        Log.v("CONTENTARTICLE:",article.getMedia().getURL());
+
+        if(article.getMedia().getURL().contains("youtube.com")){
+            content+= new YoutubeManager(400,400,article.getMedia().getURL()).getEmbedCode();
+        }
     }
 
     public void save(String filePath)throws IOException{
