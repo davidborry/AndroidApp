@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         NewsDBHelper dbNews = new NewsDBHelper(this);
         try{
-            Article a =  dbNews.readDataBase().get(1);
+            Article a =  dbNews.readDataBase().get(0);
 
             CSSBuilder css = new CSSBuilder(this);
             css.build("article.css");

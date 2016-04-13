@@ -11,6 +11,7 @@ public class Article {
     private String date;
     private Category category;
     private Media media;
+    private String mediaURL;
 
     public enum Category{
         POLITICS,
@@ -111,6 +112,11 @@ public class Article {
             media = Media.VIDEO;
 
         media.setURL(url);
+        mediaURL = url;
+    }
+
+    public String getMediaURL(){
+        return mediaURL;
     }
 
     @Override

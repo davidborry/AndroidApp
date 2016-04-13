@@ -69,8 +69,10 @@ public class HTMLBuilder {
     }
 
     public void makeMedia(){
-        if(article.getMedia() == Article.Media.IMAGE)
-            content+="<img width=\"100%\" src=\""+article.getMedia().getURL()+"\" />\n";
+        if(article.getMedia() == Article.Media.IMAGE){
+            content+="<img width=\"100%\" src=\""+article.getMediaURL()+"\" />\n";
+            Log.v("MEDIAURL:",article.getMediaURL());
+        }
 
         else
             makeVideo();
@@ -81,7 +83,7 @@ public class HTMLBuilder {
 
         if(article.getMedia().getURL().contains("youtube.com")){
 
-            content+= new YoutubeManager(d.getWidth(),d.getHeight(),article.getMedia().getURL()).getEmbedCode();
+            content+= new YoutubeManager(d.getWidth(),d.getHeight(),article.getMediaURL()).getEmbedCode();
         }
     }
 
