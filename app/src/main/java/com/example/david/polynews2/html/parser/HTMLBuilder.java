@@ -1,8 +1,13 @@
 package com.example.david.polynews2.html.parser;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.example.david.polynews2.article.Article;
+import com.example.david.polynews2.window.Dimensions;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,9 +24,13 @@ public class HTMLBuilder {
     private String filepath;
     private String URL = "/data/data/com.example.david.polynews2/databases/";
     private String content;
+    private Context context;
+    private Dimensions d;
 
-    public HTMLBuilder(Article article){
+    public HTMLBuilder(Article article, Context context){
         this.article = article;
+        this.context = context;
+        d = new Dimensions(this.context);
         makePage();
     }
 
@@ -39,6 +48,7 @@ public class HTMLBuilder {
         content+="<head>\n";
         content+="<meta charset=\"utf-8\" />\n";
         content+="<title>"+article.getTitle() +"</title>\n";
+        content+="<link rel=\"stylesheet\" href=\"article.css\" />\n";
         content+="</head>\n";
     }
 
@@ -47,9 +57,11 @@ public class HTMLBuilder {
         content+="<h1 id=\"title\">"+article.getTitle()+"</h1>\n";
         content+="<h2 id=\"author\">" + article.getAuthor() + "</h2>\n";
         content+="<p id=\"date\">" + article.getDate() + "</p>\n";
-        content+="<p id=\"category\">"+article.getCategory().toString()+"</p>\n";
+        content +="<p id=\"category\">"+article.getCategory().toString()+"</p>\n";
         content+="<p id=\"content\">" + article.getBody() + "</p>\n";
+        content+="<div class=\"videoWrapper\">\n";
         makeMedia();
+        content+="</div>\n";
         //content+="<a id=\"media\" href=\""+article.getMedia().getURL()+"\">MEDIA</a>\n";
         content+="</body>\n";
         Log.v("CONTENTARTICLE:",content);
@@ -58,7 +70,7 @@ public class HTMLBuilder {
 
     public void makeMedia(){
         if(article.getMedia() == Article.Media.IMAGE)
-            content+="<img src=\""+article.getMedia().getURL()+"\" />\n";
+            content+="<img width=\"100%\" src=\""+article.getMedia().getURL()+"\" />\n";
 
         else
             makeVideo();
@@ -68,7 +80,8 @@ public class HTMLBuilder {
         Log.v("CONTENTARTICLE:",article.getMedia().getURL());
 
         if(article.getMedia().getURL().contains("youtube.com")){
-            content+= new YoutubeManager(400,400,article.getMedia().getURL()).getEmbedCode();
+
+            content+= new YoutubeManager(d.getWidth(),d.getHeight(),article.getMedia().getURL()).getEmbedCode();
         }
     }
 

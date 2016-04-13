@@ -26,7 +26,7 @@ public class YoutubeManager extends MediaManager {
 
     public String getEmbedCode(){
         Log.v("EMBEDVIDEO:", "<iframe src=\"" + embedURL + "\" width=\"" + width + "\" height=\"" + height + "\"></iframe>");
-        return "<iframe src=\""+ embedURL+"\" width=\""+width+"\" height=\""+height+"\"></iframe>";
+        return "<iframe id=\"video\" src=\""+ embedURL+"\" width=\"auto\" height=\"auto\" allowFullScreen></iframe>";
     }
 
 }
