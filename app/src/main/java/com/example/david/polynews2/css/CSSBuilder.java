@@ -2,6 +2,8 @@ package com.example.david.polynews2.css;
 
 import android.content.Context;
 
+import com.example.david.polynews2.storage.Copy;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +23,8 @@ public class CSSBuilder {
     }
     public void build(String fileName) throws IOException{
         this.fileName = fileName;
-        InputStream myInput = context.getAssets().open(fileName);
+        Copy.store(context,fileName, "databases/" + fileName);
+        /*InputStream myInput = context.getAssets().open(fileName);
 
         FileOutputStream myOutput = new FileOutputStream(URL+fileName);
         byte[] buffer = new byte[1024];
@@ -31,6 +34,6 @@ public class CSSBuilder {
         }
         myOutput.flush();
         myOutput.close();
-        myInput.close();
+        myInput.close();*/
     }
 }
