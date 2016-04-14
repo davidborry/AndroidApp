@@ -15,7 +15,7 @@ import com.example.david.polynews2.css.CSSBuilder;
 import com.example.david.polynews2.db.NewsDBHelper;
 import com.example.david.polynews2.html.parser.HTMLBuilder;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends BackActivity {
 
     private WebView web;
     private Button buttonMenu;
@@ -31,9 +31,9 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_test);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
@@ -65,16 +65,4 @@ public class TestActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // API 5+ solution
-                onBackPressed();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }

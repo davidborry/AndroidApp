@@ -12,11 +12,20 @@ import android.widget.ImageButton;
 public class MenuActivity extends AppCompatActivity {
 
     private ImageButton test;
+    private ImageButton campusButton;
 
     private View.OnClickListener testClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MenuActivity.this, TestActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener campusClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MenuActivity.this, CampusActivity.class);
             startActivity(intent);
         }
     };
@@ -34,5 +43,8 @@ public class MenuActivity extends AppCompatActivity {
     public void initializeButtons(){
         test = (ImageButton) findViewById(R.id.testApp);
         test.setOnClickListener(testClick);
+
+        campusButton = (ImageButton) findViewById(R.id.campusButton);
+        campusButton.setOnClickListener(campusClick);
     }
 }
