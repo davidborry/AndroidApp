@@ -25,7 +25,7 @@ public class MenuActivity extends AppCompatActivity {
     private View.OnClickListener campusClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+            Intent intent = new Intent(MenuActivity.this, CampusActivity.class);
             startActivity(intent);
         }
     };

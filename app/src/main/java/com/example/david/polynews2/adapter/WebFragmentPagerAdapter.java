@@ -18,9 +18,9 @@ import com.example.david.polynews2.fragment.WebFragment;
  */
 public class WebFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
-    private Context context;
+    private static int PAGE_COUNT = 3;
+    private static String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
+    protected Context context;
 
     public WebFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
@@ -41,5 +41,9 @@ public class WebFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         // Generate title based on item position
         return tabTitles[position];
+    }
+
+    public static void setCampusTabTitles(){
+        tabTitles = new String[] {"TEMPLIERS","LEARNING CENTER","LUCIOLES"};
     }
 }

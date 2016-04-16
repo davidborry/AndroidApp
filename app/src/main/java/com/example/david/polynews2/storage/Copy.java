@@ -33,4 +33,8 @@ public class Copy {
         myOutput.close();
         myInput.close();
     }
+
+    public static void store(Context context, String localFileName) throws IOException{
+        store(context,localFileName,localFileName);
+    }
 }

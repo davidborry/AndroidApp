@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.example.david.polynews2.R;
@@ -14,6 +16,7 @@ import com.example.david.polynews2.R;
  */
 public class WebFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
+    private static String URL = "#";
 
     private int mPage;
 
@@ -35,8 +38,19 @@ public class WebFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_web, container, false);
-        TextView textView = (TextView) view;
-        textView.setText("Fragment #" + mPage);
+        WebView web = (WebView) view;
+        WebSettings ws = web.getSettings();
+        ws.setJavaScriptEnabled(true);
+
+        web.loadUrl(URL+mPage+".html");
         return view;
+    }
+
+    public static void setUrlCategory(String URL2){
+        URL=URL2;
+    }
+
+    public static String getCurrentURLCategory(){
+        return URL;
     }
 }
