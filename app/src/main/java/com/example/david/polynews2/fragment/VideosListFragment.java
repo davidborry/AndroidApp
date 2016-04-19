@@ -16,8 +16,8 @@ import com.example.david.polynews2.adapter.VideosCustomAdapter;
 
 import java.util.List;
 
-import com.example.david.polynews2.html.video.Video;
-import com.example.david.polynews2.html.video.YoutubeAPI;
+import com.example.david.polynews2.html.media.Video;
+import com.example.david.polynews2.html.media.YoutubeAPI;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.david.polynews2.article.Article;
-import com.example.david.polynews2.html.video.YoutubeManager;
+import com.example.david.polynews2.html.media.YoutubeManager;
 import com.example.david.polynews2.window.Dimensions;
 
 import java.io.FileOutputStream;

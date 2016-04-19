@@ -12,6 +12,9 @@ public class Article {
     private Category category;
     private Media media;
     private String mediaURL;
+    private String iconURL;
+
+    private static final String iconVideo = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Youtube-variation.png";
 
     public enum Category{
         POLITICS,
@@ -106,10 +109,15 @@ public class Article {
     }
 
     public void setMedia(int c, String url){
-        if(c == 0)
+        if(c == 0){
             media = Media.IMAGE;
-        else
+            iconURL = url;
+        }
+        else{
             media = Media.VIDEO;
+            iconURL = iconVideo;
+
+        }
 
         media.setURL(url);
         mediaURL = url;
@@ -117,6 +125,10 @@ public class Article {
 
     public String getMediaURL(){
         return mediaURL;
+    }
+
+    public String getIconURL(){
+        return iconURL;
     }
 
     @Override

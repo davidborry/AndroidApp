@@ -123,7 +123,9 @@ public class NewsDBHelper extends SQLiteOpenHelper {
             Article l = getArticle(id,cursor);
           //  Log.v("ARTICLEURL:",l.getMedia().getURL());
             articles.add(l);
+            id++;
             cursor.moveToNext();
+
         }
 
         cursor.close();

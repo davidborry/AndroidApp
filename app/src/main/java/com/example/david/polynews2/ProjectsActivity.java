@@ -30,6 +30,7 @@ public class ProjectsActivity extends BackActivity {
 
         catch(Exception e){
             Log.e("FRAGMENTERROR: ", e.toString());
+
         }
     }
 }
