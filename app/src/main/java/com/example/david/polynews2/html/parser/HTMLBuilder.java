@@ -1,18 +1,14 @@
 package com.example.david.polynews2.html.parser;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
-import android.view.Display;
-import android.view.WindowManager;
 
 import com.example.david.polynews2.article.Article;
+import com.example.david.polynews2.html.video.YoutubeManager;
 import com.example.david.polynews2.window.Dimensions;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.charset.Charset;
 
 /**

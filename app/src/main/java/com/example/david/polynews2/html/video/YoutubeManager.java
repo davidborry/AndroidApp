@@ -1,8 +1,8 @@
-package com.example.david.polynews2.html.parser;
+package com.example.david.polynews2.html.video;
 
 import android.util.Log;
 
-import com.example.david.polynews2.article.Article;
+import com.example.david.polynews2.html.video.MediaManager;
 
 /**
  * Created by david on 13/04/2016.

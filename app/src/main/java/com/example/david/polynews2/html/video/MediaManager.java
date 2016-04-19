@@ -1,4 +1,4 @@
-package com.example.david.polynews2.html.parser;
+package com.example.david.polynews2.html.video;
 
 import com.example.david.polynews2.R;
 
