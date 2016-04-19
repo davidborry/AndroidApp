@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.david.polynews2.CampusActivity;
+import com.example.david.polynews2.ProjectsActivity;
 import com.example.david.polynews2.R;
 import com.example.david.polynews2.TestActivity;
 
@@ -27,7 +28,7 @@ public class MenuFragment extends Fragment {
     private View.OnClickListener testClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getActivity(), TestActivity.class);
+            Intent intent = new Intent(getActivity(), ProjectsActivity.class);
             startActivity(intent);
         }
     };

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.example.david.polynews2.R;
 import com.example.david.polynews2.adapter.VideosCustomAdapter;
 
 import java.util.List;
