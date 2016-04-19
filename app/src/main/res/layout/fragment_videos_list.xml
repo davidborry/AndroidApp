@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsListFragment">
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|top"
+        android:id="@+id/news_grid_layout"
+        android:numColumns="2">
+
+
+    </GridView>
+
+    <TextView
+        android:id="@+id/news_empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text=""/>
+</FrameLayout>
