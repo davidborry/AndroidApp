@@ -53,12 +53,14 @@ public class HTMLBuilder {
         content+="<h1 id=\"title\">"+article.getTitle()+"</h1>\n";
         content+="<h2 id=\"author\">" + article.getAuthor() + "</h2>\n";
         content+="<p id=\"date\">" + article.getDate() + "</p>\n";
-        content +="<p id=\"category\">"+article.getCategory().toString()+"</p>\n";
-        content+="<p id=\"content\">" + article.getBody() + "</p>\n";
+
         content+="<div class=\"videoWrapper\">\n";
         makeMedia();
         content+="</div>\n";
         //content+="<a id=\"media\" href=\""+article.getMedia().getURL()+"\">MEDIA</a>\n";
+
+        content +="<p id=\"category\">"+article.getCategory().toString()+"</p>\n";
+        content+="<p id=\"content\">" + article.getBody() + "</p>\n";
         content+="</body>\n";
         Log.v("CONTENTARTICLE:",content);
 
