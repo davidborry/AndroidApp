@@ -9,6 +9,7 @@ import android.webkit.WebView;
  */
 public class WebActivity extends BackActivity {
     private String url;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,9 @@ public class WebActivity extends BackActivity {
 
         Bundle extra = getIntent().getExtras();
         url = extra.getString("url");
+        title = extra.getString("title");
+
+        getSupportActionBar().setTitle(title);
 
         WebView webView = (WebView) findViewById(R.id.web_page);
         WebSettings ws = webView.getSettings();

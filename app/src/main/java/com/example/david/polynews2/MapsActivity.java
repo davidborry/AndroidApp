@@ -2,13 +2,20 @@ package com.example.david.polynews2;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.example.david.polynews2.db.LocationsDBHelper;
+import com.example.david.polynews2.map.Location;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends BackActivity implements OnMapReadyCallback {
 
@@ -18,6 +25,8 @@ public class MapsActivity extends BackActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        getSupportActionBar().setTitle("Maps");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -38,9 +47,39 @@ public class MapsActivity extends BackActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+
+      //  mMap.setMyLocationEnabled(true);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(43.615546, 7.071921);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        loadLocations();
+
+    }
+
+    public void loadLocations(){
+        LocationsDBHelper db = new LocationsDBHelper(this);
+        float zoomLevel = 16;
+
+        try{
+            ArrayList<Location> locations = (ArrayList) db.readDatabase();
+
+            for(int i = 0; i < locations.size(); i++){
+                LatLng xyI = new LatLng(locations.get(i).getLat(),locations.get(i).getLng());
+                MarkerOptions markerI = new MarkerOptions().position(xyI).title(locations.get(i).getName());
+
+                if(i==0){
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(xyI, zoomLevel));
+
+                }
+
+                mMap.addMarker(markerI);
+            }
+
+
+        }
+
+        catch(Exception e){
+            Log.e("LOCATIONERROR: ",e.toString());
+        }
+
     }
 }

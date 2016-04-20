@@ -36,6 +36,7 @@ public class NewsActivity extends BackActivity {
                 Article a = (Article) parent.getAdapter().getItem(position);
                 Bundle bundle = new Bundle();
                 bundle.putString("url",path+a.getId()+".html");
+                bundle.putString("title",a.getTitle());
                 newActivity.putExtras(bundle);
 
             }
@@ -53,6 +54,8 @@ public class NewsActivity extends BackActivity {
 
         setContentView(R.layout.activity_news);
         NewsDBHelper dbNews = new NewsDBHelper(this);
+
+        getSupportActionBar().setTitle("L'Actu");
 
         try{
             news = (ArrayList) dbNews.readDataBase();

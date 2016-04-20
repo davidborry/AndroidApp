@@ -32,6 +32,8 @@ public class CampusActivity extends BackActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campus);
 
+        getSupportActionBar().setTitle("Campus");
+
         try{
             copyCampusFiles();
             CSSBuilder css = new CSSBuilder(this);

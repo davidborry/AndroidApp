@@ -22,16 +22,22 @@ import java.util.List;
 
 public class NewsDBHelper extends SQLiteOpenHelper {
 
-    private static String DB_PATH = "/data/data/com.example.david.polynews2/databases/";
-    private static String DB_NAME = "polynews_database";
-    private static final String COMMAND = "SELECT * FROM news ORDER BY date DESC";
+    protected static String DB_PATH = "/data/data/com.example.david.polynews2/databases/";
+    protected static String DB_NAME = "polynews_database";
+    protected static String COMMAND = "SELECT * FROM news ORDER BY date DESC";
 
-    private SQLiteDatabase myDataBase;
-    private final Context myContext;
+    protected SQLiteDatabase myDataBase;
+    protected final Context myContext;
 
     public NewsDBHelper(Context context) {
         super(context, DB_NAME, null, 1);
         this.myContext = context;
+    }
+
+    public NewsDBHelper(Context context, String dbName){
+        super(context,dbName,null,1);
+        this.myContext = context;
+        DB_NAME = dbName;
     }
 
     public void createDataBase() throws IOException {
@@ -140,8 +146,16 @@ public class NewsDBHelper extends SQLiteOpenHelper {
         l.setAuthor(cursor.getString(2));
         l.setDate(cursor.getString(3));
         l.setCategory(cursor.getInt(4));
-        l.setMedia(cursor.getInt(5),cursor.getString(6));
+        l.setMedia(cursor.getInt(5), cursor.getString(6));
 
         return l;
+    }
+
+    public static void changeName(String name){
+        DB_NAME = name;
+    }
+
+    public static void changeSelectCommand(String select){
+        COMMAND = select;
     }
 }
