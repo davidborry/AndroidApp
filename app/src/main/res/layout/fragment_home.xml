@@ -27,10 +27,7 @@
         style="@style/Base.TextAppearance.AppCompat.Large"
         android:autoText="true" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
+
 
     <GridView
         android:id="@+id/gridView"
