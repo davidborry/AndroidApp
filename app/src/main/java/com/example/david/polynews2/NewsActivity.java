@@ -69,6 +69,8 @@ public class NewsActivity extends BackActivity {
 
         catch (Exception e){
 
+            Log.e("Error : ",e.toString());
+
         }
 
     }

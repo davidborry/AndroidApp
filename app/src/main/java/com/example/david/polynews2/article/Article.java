@@ -1,5 +1,7 @@
 package com.example.david.polynews2.article;
 
+import com.example.david.polynews2.html.media.YoutubeAPI;
+
 /**
  * Created by David on 23/03/16.
  */
@@ -115,7 +117,8 @@ public class Article {
         }
         else{
             media = Media.VIDEO;
-            iconURL = iconVideo;
+            //iconURL = iconVideo;
+           iconURL = "http://img.youtube.com/vi/" + YoutubeAPI.getVideoId(url) + "/0.jpg";
 
         }
 

@@ -3,9 +3,11 @@ package com.example.david.polynews2.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,7 +15,9 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.example.david.polynews2.R;
+import com.example.david.polynews2.storage.Copy;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Handler;
@@ -44,11 +48,26 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        myMethod(view);
+        try{
+            myMethod(view);
+        }
+
+        catch(IOException e){
+            Log.e("ERROR : ", e.toString());
+        }
+
         return view;
     }
 
-    public void myMethod(View v){
+    public void initializeWebView(View v) throws IOException{
+        Copy.store(getContext(), "html/home.html", "databases/home.html");
+
+        WebView webView = (WebView) v.findViewById(R.id.home_web);
+        webView.loadUrl("file:///data/data/com.example.david.polynews2/databases/home.html");
+    }
+    public void myMethod(View v) throws IOException{
+
+        initializeWebView(v);
 
         final ImageSwitcher sw;
         sw = (ImageSwitcher) v.findViewById(R.id.imageSwitcher);
@@ -64,6 +83,7 @@ public class HomeFragment extends Fragment {
 
         new Timer().scheduleAtFixedRate(new TimerTask() {
             int i = 0;
+
             @Override
             public void run() {
                 getActivity().runOnUiThread(new Runnable() {
@@ -82,12 +102,6 @@ public class HomeFragment extends Fragment {
 
             }
         }, 0, 1000);
-
-        TextView title = (TextView) v.findViewById(R.id.home_presentation);
-        title.setText("Présentation");
-        TextView tv = (TextView) v.findViewById(R.id.hometest);
-        tv.setText("Polytech Nice-Sophia est l'école d'ingénieur de l'Université Nice - Sophia Antipolis. Elle fait partie du regroupement des écoles du réseau national Polytech d'école d'ingénieur polytechnique (Ecole Polytechnique Universitaire). Inscrite au titre de grande école d’ingénieurs, habilitée par la commission des titres d'ingénieur (CTI), notre école est au centre d'une synergie Enseignement - Recherche - Industrie. Nous sommes implantés au coeur de la technopole Sophia-Antipolis, sur le campus SophiaTech. Avec une admission Post-Bac, Bac+2 et Bac+3, Nous proposons des formations originales, innovantes et de niveau international : Bâtiments, Electronique, Electronique et Informatique Industrielle, Génie Biologie, Génie l'Eau, Mathématiques Appliquées et Modélisation et Sciences Informatiques. Ainsi qu'un parcours des écoles d'ingénieurs Polytech (PeiP/CiP) d'admission post-Bac. Polytech Nice-Sophia affiche clairement sa volonté d’ouverture sur le monde industriel. Dans un environnement favorable, notre école forme des ingénieurs ayant une base scientifique et technique solide, possédant une bonne culture d’entreprise, capables de communiquer et initiés aux fonctions d’encadrement. Nous offrons une formation en adéquation avec les besoins de l’entreprise. 95% de nos diplômés trouvent un emploi dans les 3 mois qui suivent la sortie de notre école. Nous sommes nés en 2005 du regroupement de plusieurs écoles d'ingénieurs locales : de l'Ecole Supérieure d'Ingénieurs de Nice Sophia Antipolis (ESINSA), de l'Ecole Supérieure en Sciences Informatiques (ESSI) et du Magistère de Pharmacologie de l'Université.\n" +
-                "\n");
 
     }
 

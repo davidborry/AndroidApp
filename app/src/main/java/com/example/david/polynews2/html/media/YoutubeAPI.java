@@ -58,4 +58,16 @@ public class YoutubeAPI {
         }
         return videos;
     }
+
+    public static String getVideoId(String url){
+        String a = "";
+        try {
+            a = url.split("=")[1];
+        }
+        catch(Exception e){
+            Log.e("SPLITERROR:",url);
+        }
+
+        return a;
+    }
 }
