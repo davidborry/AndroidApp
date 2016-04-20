@@ -61,4 +61,16 @@
             android:clickable="false"
             android:text="NEWS"/> -->
     </FrameLayout>
+
+    <FrameLayout>
+    <ImageButton
+        android:id="@+id/mapButton"
+        android:layout_width="64dip"
+        android:layout_height="64dip"
+        android:scaleType="fitCenter"
+        android:padding="0dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/app_map"/>
+
+    </FrameLayout>
 </GridLayout>

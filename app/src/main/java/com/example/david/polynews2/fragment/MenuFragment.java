@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.david.polynews2.CampusActivity;
+import com.example.david.polynews2.MapsActivity;
 import com.example.david.polynews2.NewsActivity;
 import com.example.david.polynews2.ProjectsActivity;
 import com.example.david.polynews2.R;
@@ -23,6 +24,7 @@ public class MenuFragment extends Fragment {
     private ImageButton test;
     private ImageButton campusButton;
     private ImageButton newsButton;
+    private ImageButton mapButton;
 
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
@@ -47,6 +49,14 @@ public class MenuFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getActivity(), NewsActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    public View.OnClickListener mapClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), MapsActivity.class);
             startActivity(intent);
         }
     };
@@ -83,5 +93,8 @@ public class MenuFragment extends Fragment {
 
         newsButton = (ImageButton) v.findViewById(R.id.newsButton);
         newsButton.setOnClickListener(newsClick);
+
+        mapButton = (ImageButton) v.findViewById(R.id.mapButton);
+        mapButton.setOnClickListener(mapClick);
     }
 }
