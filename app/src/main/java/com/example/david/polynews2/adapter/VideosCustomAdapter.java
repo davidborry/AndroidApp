@@ -34,10 +34,10 @@ public class VideosCustomAdapter extends ArrayAdapter<Video> {
         }
         final Video video = getItem(position);
 
-        ((ImageView)convertView.findViewById(R.id.news_thumbnail)).setImageBitmap(null);
+        ((ImageView)convertView.findViewById(R.id.videos_thumbnail)).setImageBitmap(null);
         String title = video.getTitle().substring(0, Math.min(50, video.getTitle().length()));
         String content = video.getDescription().substring(0, Math.min(100, video.getDescription().length()))+"...";
-        ((TextView)convertView.findViewById(R.id.news_title)).setText(title);
+        ((TextView)convertView.findViewById(R.id.videos_title)).setText(title);
 
         VideosCustomAdapter.getTask(convertView).execute(video.getThumbnail());
         return convertView;
@@ -59,7 +59,7 @@ public class VideosCustomAdapter extends ArrayAdapter<Video> {
             @Override
             protected void onPostExecute(Bitmap bitmap) {
                 if(bitmap != null) {
-                    ((ImageView)convertView.findViewById(R.id.news_thumbnail)).setImageBitmap(bitmap);
+                    ((ImageView)convertView.findViewById(R.id.videos_thumbnail)).setImageBitmap(bitmap);
                 }
             }
         };
