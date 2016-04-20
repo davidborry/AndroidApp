@@ -94,20 +94,27 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void run() {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (i == 0)
-                            sw.setImageResource(R.drawable.presentation1);
-                        else if (i == 1) {
-                            sw.setImageResource(R.drawable.presentation2);
-                        } else if (i == 2) {
-                            sw.setImageResource(R.drawable.presentation3);
-                            i = -1;
+                try{
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (i == 0)
+                                sw.setImageResource(R.drawable.presentation1);
+                            else if (i == 1) {
+                                sw.setImageResource(R.drawable.presentation2);
+                            } else if (i == 2) {
+                                sw.setImageResource(R.drawable.presentation3);
+                                i = -1;
+                            }
+                            i++;
                         }
-                        i++;
-                    }
-                });
+                    });
+                }
+
+                catch(Exception e){
+                    Log.e("HomeFragment","Error",e);
+                }
+
 
             }
         }, 0, 3000);
