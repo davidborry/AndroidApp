@@ -1,6 +1,9 @@
 package com.example.david.polynews2.fragment;
 
 import android.app.Activity;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,19 +11,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.GridView;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import com.example.david.polynews2.ImageItem;
 import com.example.david.polynews2.R;
 import com.example.david.polynews2.storage.Copy;
+import com.example.david.polynews2.adapter.GridViewAdapter;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Handler;
 
 /**
  * Created by david on 19/04/2016.
@@ -75,8 +83,8 @@ public class HomeFragment extends Fragment {
             @Override
             public View makeView() {
                 ImageView myView = new ImageView(getContext());
-                myView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                myView.setLayoutParams(new ImageSwitcher.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                myView.setScaleType(ImageView.ScaleType.CENTER);
+                myView.setLayoutParams(new ImageSwitcher.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
                 return myView;
             }
         });
@@ -90,10 +98,11 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void run() {
                         if (i == 0)
-                            sw.setImageResource(R.drawable.app_campus);
+                            sw.setImageResource(R.drawable.presentation1);
                         else if (i == 1) {
-                            sw.setImageResource(R.drawable.app_test);
+                            sw.setImageResource(R.drawable.presentation2);
                         } else if (i == 2) {
+                            sw.setImageResource(R.drawable.presentation3);
                             i = -1;
                         }
                         i++;
@@ -101,7 +110,25 @@ public class HomeFragment extends Fragment {
                 });
 
             }
-        }, 0, 1000);
+        }, 0, 3000);
+
+
+        TextView galerie = (TextView) v.findViewById(R.id.home_galerie);
+        galerie.setText("Galerie Photos");
+        GridView grid = (GridView)v.findViewById(R.id.gridView);
+        ArrayList<ImageItem> test = new ArrayList<>();
+        TypedArray imgs = getResources().obtainTypedArray(R.array.image_ids);
+
+
+        for (int i = 0; i < 2; i++) { // remplacer 2 par imgs.size()
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), imgs.getResourceId(i, -1));
+            test.add(new ImageItem(bitmap, "Image#" + i));
+        }
+
+        GridViewAdapter gridAdapter = new GridViewAdapter(getContext(), R.layout.grid_item_layout,test);
+        grid.setAdapter(gridAdapter);
+
+
 
     }
 
