@@ -38,7 +38,6 @@ public class VideosCustomAdapter extends ArrayAdapter<Video> {
         String title = video.getTitle().substring(0, Math.min(50, video.getTitle().length()));
         String content = video.getDescription().substring(0, Math.min(100, video.getDescription().length()))+"...";
         ((TextView)convertView.findViewById(R.id.news_title)).setText(title);
-        ((TextView)convertView.findViewById(R.id.news_content)).setText(content);
 
         VideosCustomAdapter.getTask(convertView).execute(video.getThumbnail());
         return convertView;

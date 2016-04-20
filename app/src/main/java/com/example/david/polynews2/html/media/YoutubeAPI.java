@@ -27,8 +27,13 @@ public class YoutubeAPI {
 
     public List<Video> getVideos() {
         List<Video> videos = new ArrayList<>();
+        addVideos(videos, "");
+        return videos;
+    }
+
+    private void addVideos(List<Video> videos, String pageToken) {
         try {
-            URL url = new URL(String.format("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=%s&key=%s", playlist, key));
+            URL url = new URL(String.format("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=%s&key=%s"+(pageToken.length() != 0 ? "&pageToken="+pageToken : ""), playlist, key));
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String line = reader.readLine();
             StringBuilder builder = new StringBuilder();
@@ -40,7 +45,6 @@ public class YoutubeAPI {
 
             JSONObject object = new JSONObject(builder.toString());
             JSONArray items = object.getJSONArray("items");
-           // Log.i("URLSVID : ", items.getString(0));
             for(int i = 0; i < items.length(); i++) {
                 JSONObject video = items.getJSONObject(i);
                 JSONObject snippet = video.getJSONObject("snippet");
@@ -50,13 +54,16 @@ public class YoutubeAPI {
                         snippet.getString("description"),
                         snippet.getJSONObject("resourceId").getString("videoId"),
                         thumbnail
-                        ));
+                ));
+            }
+            if(pageToken.length() == 0) {
+                // We read one more page
+                addVideos(videos, object.getString("nextPageToken"));
             }
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return videos;
     }
 
     public static String getVideoId(String url){
