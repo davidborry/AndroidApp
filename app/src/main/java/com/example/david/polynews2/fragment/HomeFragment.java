@@ -120,8 +120,10 @@ public class HomeFragment extends Fragment {
         TypedArray imgs = getResources().obtainTypedArray(R.array.image_ids);
 
 
-        for (int i = 0; i < 2; i++) { // remplacer 2 par imgs.size()
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), imgs.getResourceId(i, -1));
+        for (int i = 0; i < 6; i++) { // remplacer 2 par imgs.size()
+            Bitmap bitmap;
+            bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), imgs.getResourceId(i, -1)),100,100,true);
+           // Bitmap bitmap = BitmapFactory.decodeResource(getResources(), imgs.getResourceId(i, -1));
             test.add(new ImageItem(bitmap, "Image#" + i));
         }
 
