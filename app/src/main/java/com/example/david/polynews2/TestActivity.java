@@ -42,7 +42,7 @@ public class TestActivity extends BackActivity {
 
 
         try{
-            Article a =  dbNews.readDataBase().get(0);
+            Article a =  dbNews.readDatabase().get(0);
 
             CSSBuilder css = new CSSBuilder(this);
             css.build("article.css");

@@ -58,7 +58,7 @@ public class NewsActivity extends BackActivity {
         getSupportActionBar().setTitle("L'Actu");
 
         try{
-            news = (ArrayList) dbNews.readDataBase();
+            news = (ArrayList) dbNews.readDatabase();
             buildArticles();
 
             NewsAdapter newsAdapter = new NewsAdapter(this,news);

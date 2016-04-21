@@ -36,6 +36,7 @@
         <activity android:name=".ProjectsActivity" />
         <activity android:name=".NewsActivity" />
         <activity android:name=".WebActivity" />
+        <activity android:name=".EventsActivity"/>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

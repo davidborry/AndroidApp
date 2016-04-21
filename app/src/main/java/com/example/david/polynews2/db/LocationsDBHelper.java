@@ -13,42 +13,15 @@ import java.util.List;
 /**
  * Created by david on 20/04/2016.
  */
-public class LocationsDBHelper extends NewsDBHelper {
+public class LocationsDBHelper extends AbstractDBHelper<Location> {
 
     public LocationsDBHelper(Context context){
         super(context,"locations_database");
         changeSelectCommand("SELECT * FROM locations");
     }
 
-
-    public List<Location> readDatabase() throws SQLException {
-        List<Location> locations = new ArrayList<Location>();
-        try {
-            createDataBase();
-        }
-
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        openDataBase();
-        Cursor cursor = myDataBase.rawQuery(COMMAND, null);
-
-        cursor.moveToFirst();
-        int id = 1;
-        while(!cursor.isAfterLast()){
-            Location l = getLocation(id,cursor);
-            //  Log.v("ARTICLEURL:",l.getMedia().getURL());
-            locations.add(l);
-            id++;
-            cursor.moveToNext();
-
-        }
-
-        cursor.close();
-        return locations;
-    }
-
-    public Location getLocation(int id, Cursor cursor){
+    @Override
+    public Location getElement(int id, Cursor cursor){
         Location location = new Location(id);
 
         location.setName(cursor.getString(1));
