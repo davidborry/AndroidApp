@@ -20,11 +20,15 @@ import java.util.List;
 public class MapsActivity extends BackActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Bundle extras;
+    private float zoomLevel = 16;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        extras = getIntent().getExtras();
 
         getSupportActionBar().setTitle("Maps");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -51,13 +55,37 @@ public class MapsActivity extends BackActivity implements OnMapReadyCallback {
       //  mMap.setMyLocationEnabled(true);
         // Add a marker in Sydney and move the camera
 
-        loadLocations();
+        if(!checkEventExtra())
+            loadLocations();
+
+    }
+
+    public boolean checkEventExtra(){
+
+        try{
+            String event = extras.getString("event");
+            float lat = extras.getFloat("lat");
+            float lng = extras.getFloat("lng");
+            int cat = extras.getInt("cat");
+
+            LatLng xy = new LatLng(lat,lng);
+            MarkerOptions marker = new MarkerOptions().position(xy).title(event);
+
+            mMap.addMarker(marker);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(xy,zoomLevel));
+
+            return true;
+        }
+
+        catch (Exception e){
+            return false;
+
+        }
 
     }
 
     public void loadLocations(){
         LocationsDBHelper db = new LocationsDBHelper(this);
-        float zoomLevel = 16;
 
         try{
             ArrayList<Location> locations = (ArrayList) db.readDatabase();

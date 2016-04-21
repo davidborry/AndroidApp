@@ -26,7 +26,7 @@ public class EventsDBHelper extends AbstractDBHelper<Event> {
         event.setCategory(cursor.getInt(5));
         event.setUrl(cursor.getString(7));
         event.setMedia(cursor.getInt(6));
-        event.setLocation(id,cursor.getString(8),cursor.getInt(9),cursor.getInt(10));
+        event.setLocation(id,cursor.getString(8),cursor.getFloat(9),cursor.getFloat(10));
 
         return event;
     }

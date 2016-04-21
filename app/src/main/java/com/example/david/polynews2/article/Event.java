@@ -93,7 +93,7 @@ public class Event {
         this.location = location;
     }
 
-    public void setLocation(int id,String name, int lat, int lng){
+    public void setLocation(int id,String name, float lat, float lng){
         location = new Location(id);
         location.setName(name);
         location.setLat(lat);
