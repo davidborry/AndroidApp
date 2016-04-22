@@ -20,12 +20,11 @@ public class EventsDBHelper extends AbstractDBHelper<Event> {
         Event event = new Event(id);
 
         event.setTitle(cursor.getString(1));
-        event.setContent(cursor.getString(2));
+        event.setBody(cursor.getString(2));
         event.setAuthor(cursor.getString(3));
         event.setDate(cursor.getString(4));
         event.setCategory(cursor.getInt(5));
-        event.setUrl(cursor.getString(7));
-        event.setMedia(cursor.getInt(6));
+        event.setMedia(cursor.getInt(6),cursor.getString(7));
         event.setLocation(id,cursor.getString(8),cursor.getFloat(9),cursor.getFloat(10));
 
         return event;

@@ -1,18 +1,15 @@
 package com.example.david.polynews2.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.david.polynews2.R;
-import com.example.david.polynews2.article.Article;
+import com.example.david.polynews2.article.New;
 import com.example.david.polynews2.html.media.URLImage;
 
 import java.util.ArrayList;
@@ -20,9 +17,9 @@ import java.util.ArrayList;
 /**
  * Created by david on 19/04/2016.
  */
-public class NewsAdapter extends ArrayAdapter<Article> {
+public class NewsAdapter extends ArrayAdapter<New> {
 
-    public NewsAdapter(Context context, ArrayList<Article> news) {
+    public NewsAdapter(Context context, ArrayList<New> news) {
         super(context,0,news);
     }
 
@@ -30,7 +27,7 @@ public class NewsAdapter extends ArrayAdapter<Article> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Article article = getItem(position);
+        New article = getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_new, parent, false);

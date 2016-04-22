@@ -32,7 +32,7 @@ public class EventsActivity extends BackActivity {
 
             Bundle bundle = new Bundle();
 
-            bundle.putString("url",a.getIconUrl());
+            bundle.putString("url",a.getIconURL());
             bundle.putString("title",a.getTitle());
 
             newActivity.putExtras(bundle);

@@ -53,7 +53,7 @@ public class EventsAdapter extends ArrayAdapter<Event> {
         date.setText(event.getDate());
         location.setText(event.getLocation().getName());
 
-        new URLImage(icon).execute(event.getIconUrl());
+        new URLImage(icon).execute(event.getIconURL());
 
         imageButton = (ImageButton) convertView.findViewById(R.id.eventlocate_icon);
         imageButton.setOnClickListener(new View.OnClickListener() {

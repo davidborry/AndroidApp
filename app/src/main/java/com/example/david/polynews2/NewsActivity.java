@@ -8,9 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.david.polynews2.adapter.NewsAdapter;
-import com.example.david.polynews2.article.Article;
+import com.example.david.polynews2.article.New;
 import com.example.david.polynews2.db.NewsDBHelper;
-import com.example.david.polynews2.html.parser.HTMLBuilder;
+import com.example.david.polynews2.html.parser.ArticleHTMLBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class NewsActivity extends BackActivity {
     NewsDBHelper dbNews = new NewsDBHelper(this);
 
     private final String path = "file:///data/data/com.example.david.polynews2/databases/";
-    ArrayList<Article> news;
+    ArrayList<New> news;
 
     private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
         @Override
@@ -33,7 +33,7 @@ public class NewsActivity extends BackActivity {
             Intent newActivity = new Intent(NewsActivity.this, WebActivity.class);
             try{
 
-                Article a = (Article) parent.getAdapter().getItem(position);
+                New a = (New) parent.getAdapter().getItem(position);
                 Bundle bundle = new Bundle();
                 bundle.putString("url",path+a.getId()+".html");
                 bundle.putString("title",a.getTitle());
@@ -80,8 +80,8 @@ public class NewsActivity extends BackActivity {
 
     public void buildArticles() throws IOException{
         for(int i = 0; i < news.size();i++){
-            Article article = news.get(i);
-            HTMLBuilder builder = new HTMLBuilder(article,this);
+            New article = news.get(i);
+            ArticleHTMLBuilder builder = new ArticleHTMLBuilder(article,this);
             builder.save(article.getId()+".html");
         }
     }

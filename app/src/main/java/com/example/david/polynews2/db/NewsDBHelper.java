@@ -2,33 +2,18 @@ package com.example.david.polynews2.db;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import com.example.david.polynews2.article.Article;
+import com.example.david.polynews2.article.New;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class NewsDBHelper extends AbstractDBHelper<Article> {
+public class NewsDBHelper extends AbstractDBHelper<New> {
 
     public NewsDBHelper(Context context) {
         super(context, "polynews_database");
     }
 
     @Override
-    protected Article getElement(int id, Cursor cursor) {
-        Article l = new Article(id);
+    protected New getElement(int id, Cursor cursor) {
+        New l = new New(id);
 
         l.setTitle(cursor.getString(0));
         l.setBody(cursor.getString(1));
