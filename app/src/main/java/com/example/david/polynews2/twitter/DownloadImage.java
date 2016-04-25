@@ -1,4 +1,4 @@
-package fr.unice.polytech.polynews;
+package com.example.david.polynews2.twitter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
