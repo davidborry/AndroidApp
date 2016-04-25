@@ -1,4 +1,4 @@
-package fr.unice.polytech.polynews.twitter;
+package com.example.david.polynews2.twitter;
 
 import android.app.ListActivity;
 import android.content.Context;
