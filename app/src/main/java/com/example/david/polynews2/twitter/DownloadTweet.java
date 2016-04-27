@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 
 import java.util.ArrayList;
 
-import fr.unice.polytech.polynews.R;
+import com.example.david.polynews2.R;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Twitter;

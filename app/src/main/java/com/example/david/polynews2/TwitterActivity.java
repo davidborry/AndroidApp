@@ -2,6 +2,9 @@ package com.example.david.polynews2;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.Menu;
+
+import com.example.david.polynews2.twitter.DownloadTweet;
 
 
 /**
@@ -17,5 +20,12 @@ public class TwitterActivity extends ListActivity {
         downloadTweet.execute();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return (super.onCreateOptionsMenu(menu));
+    }
 
 }

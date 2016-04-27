@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import fr.unice.polytech.polynews.DownloadImage;
-import fr.unice.polytech.polynews.R;
+import com.example.david.polynews2.twitter.DownloadImage;
+import com.example.david.polynews2.R;
 
 /**
  * Created by eric on 21/04/2016.

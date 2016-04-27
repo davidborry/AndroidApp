@@ -89,4 +89,16 @@
 
     </FrameLayout>
 
+    <FrameLayout>
+        <ImageButton
+            android:id="@+id/twitterButton"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
+            android:scaleType="fitCenter"
+            android:padding="0dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/app_test"/>
+
+    </FrameLayout>
+
 </GridLayout>

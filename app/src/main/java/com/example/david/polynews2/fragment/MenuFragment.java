@@ -16,6 +16,7 @@ import com.example.david.polynews2.NewsActivity;
 import com.example.david.polynews2.ProjectsActivity;
 import com.example.david.polynews2.R;
 import com.example.david.polynews2.TestActivity;
+import com.example.david.polynews2.TwitterActivity;
 
 /**
  * Created by david on 14/04/2016.
@@ -27,6 +28,7 @@ public class MenuFragment extends Fragment {
     private ImageButton newsButton;
     private ImageButton mapButton;
     private ImageButton eventButton;
+    private ImageButton twitterButton;
 
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
@@ -71,6 +73,14 @@ public class MenuFragment extends Fragment {
         }
     };
 
+    public View.OnClickListener twitterClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), TwitterActivity.class);
+            startActivity(intent);
+        }
+    };
+
     public static MenuFragment newInstance(int page){
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -109,5 +119,8 @@ public class MenuFragment extends Fragment {
 
         eventButton = (ImageButton) v.findViewById(R.id.eventsButton);
         eventButton.setOnClickListener(eventClick);
+
+        twitterButton = (ImageButton) v.findViewById(R.id.twitterButton);
+        twitterButton.setOnClickListener(twitterClick);
     }
 }
