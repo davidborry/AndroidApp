@@ -36,7 +36,7 @@ public class TweetListAdapter extends ArrayAdapter<Tweet> {
         //Affichage de la date du tweet
 
         TextView date = (TextView) convertView.findViewById(R.id.date);
-        date.setText(tweet.getDate());
+        date.setText(tweet.getStandardDate());
 
         //Affichage contenu du tweet
 
