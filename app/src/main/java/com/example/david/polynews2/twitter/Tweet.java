@@ -1,5 +1,6 @@
 package com.example.david.polynews2.twitter;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -16,8 +17,10 @@ public class Tweet {
     public String getAuthor() {
         return author;
     }
-    public String getDate() {
-        return date.toString();
+    
+    public String getStandardDate() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy' à 'hh:mm");
+        return(simpleDateFormat.format(date));
     }
 
     public String getImageUrl() {
