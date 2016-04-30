@@ -7,12 +7,14 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.InputStream;
+import java.util.HashMap;
 
 /**
  * Created by david on 19/04/2016.
  */
 public class URLImage extends AsyncTask<String, Void, Bitmap> {
     ImageView image;
+    private static HashMap<String,Bitmap> cache = new HashMap<>();
 
     public URLImage(ImageView image) {
         this.image = image;
@@ -23,8 +25,16 @@ public class URLImage extends AsyncTask<String, Void, Bitmap> {
         String urldisplay = urls[0];
         Bitmap mIcon = null;
         try {
-            InputStream in = new java.net.URL(urldisplay).openStream();
-            mIcon = BitmapFactory.decodeStream(in);
+            if(cache.containsKey(urldisplay))
+                mIcon = cache.get(urldisplay);
+            else {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                Log.v("URLIMAGE: ", urldisplay);
+                mIcon = BitmapFactory.decodeStream(in);
+                cache.put(urldisplay,mIcon);
+                
+
+            }
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
@@ -35,5 +45,13 @@ public class URLImage extends AsyncTask<String, Void, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap result) {
         image.setImageBitmap(result);
+    }
+
+    public HashMap<String,Bitmap> getCache(){
+        return cache;
+    }
+
+    public void clearCache(){
+        cache.clear();
     }
 }
