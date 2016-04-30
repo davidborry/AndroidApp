@@ -3,6 +3,7 @@ package com.example.david.polynews2.html.parser;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.david.polynews2.article.Article;
 import com.example.david.polynews2.article.New;
 import com.example.david.polynews2.html.media.YoutubeManager;
 import com.example.david.polynews2.window.Dimensions;
@@ -16,14 +17,14 @@ import java.nio.charset.Charset;
  * Creates a simple HTML5 web page based on an New object
  */
 public class ArticleHTMLBuilder {
-    private New article;
+    private Article article;
     private String filepath;
     private String URL = "/data/data/com.example.david.polynews2/html/";
     private String content;
     private Context context;
     private Dimensions d;
 
-    public ArticleHTMLBuilder(New article, Context context){
+    public ArticleHTMLBuilder(Article article, Context context){
         this.article = article;
         this.context = context;
         d = new Dimensions(this.context);

@@ -16,4 +16,5 @@
     </string-array>
 
     <string name="title_activity_maps">Hello</string>
+    <string name="event_maps">Voir sur la carte</string>
 </resources>
