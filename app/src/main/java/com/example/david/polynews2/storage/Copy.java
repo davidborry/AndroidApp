@@ -1,7 +1,9 @@
 package com.example.david.polynews2.storage;
 
 import android.content.Context;
+import android.util.Log;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,6 +37,23 @@ public class Copy {
     }
 
     public static void store(Context context, String localFileName) throws IOException{
-        store(context,localFileName,localFileName);
+        store(context, localFileName, localFileName);
+    }
+
+    public static String getFolders(String path){
+        return path.split("/")[path.split("/").length-1];
+    }
+    public static void mkdir(String path){
+        File dir = new File(URL+path);
+        try{
+            if(!dir.exists()){
+                Log.v("DIRPATH: ", dir.getAbsolutePath() + " doesn't exists yet.");
+                dir.mkdirs();
+            }
+        }
+
+        catch(Exception e){
+            Log.v("DIRPATHERROR: ",e.toString());
+        }
     }
 }

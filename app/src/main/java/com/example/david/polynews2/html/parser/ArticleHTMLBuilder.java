@@ -18,7 +18,7 @@ import java.nio.charset.Charset;
 public class ArticleHTMLBuilder {
     private New article;
     private String filepath;
-    private String URL = "/data/data/com.example.david.polynews2/databases/";
+    private String URL = "/data/data/com.example.david.polynews2/html/";
     private String content;
     private Context context;
     private Dimensions d;
@@ -44,7 +44,7 @@ public class ArticleHTMLBuilder {
         content+="<head>\n";
         content+="<meta charset=\"utf-8\" />\n";
         content+="<title>"+article.getTitle() +"</title>\n";
-        content+="<link rel=\"stylesheet\" href=\"article.css\" />\n";
+        content+="<link rel=\"stylesheet\" href=\"../../css/article.css\" />\n";
         content+="</head>\n";
     }
 

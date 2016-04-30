@@ -9,7 +9,7 @@ import com.example.david.polynews2.window.Dimensions;
  */
 public abstract class HTMLBuilder<T> {
     protected String filepath;
-    protected String URL = "/data/data/com.example.david.polynews2/databases/";
+    protected String URL = "/data/data/com.example.david.polynews2/html/";
     protected String content;
     protected Context context;
     protected Dimensions d;

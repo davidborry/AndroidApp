@@ -9,8 +9,10 @@ import android.widget.ListView;
 
 import com.example.david.polynews2.adapter.NewsAdapter;
 import com.example.david.polynews2.article.New;
+import com.example.david.polynews2.css.CSSBuilder;
 import com.example.david.polynews2.db.NewsDBHelper;
 import com.example.david.polynews2.html.parser.ArticleHTMLBuilder;
+import com.example.david.polynews2.storage.Copy;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class NewsActivity extends BackActivity {
     private static String currentURL;
     NewsDBHelper dbNews = new NewsDBHelper(this);
 
-    private final String path = "file:///data/data/com.example.david.polynews2/databases/";
+    private final String path = "file:///data/data/com.example.david.polynews2/html/news/";
     ArrayList<New> news;
 
     private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
@@ -79,10 +81,16 @@ public class NewsActivity extends BackActivity {
     }
 
     public void buildArticles() throws IOException{
+        Copy.mkdir("html/news");
+
+        Copy.mkdir("css");
+        CSSBuilder css = new CSSBuilder(this);
+        css.build("article.css");
+
         for(int i = 0; i < news.size();i++){
             New article = news.get(i);
             ArticleHTMLBuilder builder = new ArticleHTMLBuilder(article,this);
-            builder.save(article.getId()+".html");
+            builder.save("news/"+article.getId()+".html");
         }
     }
 

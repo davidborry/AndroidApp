@@ -23,7 +23,8 @@ public class CSSBuilder {
     }
     public void build(String fileName) throws IOException{
         this.fileName = fileName;
-        Copy.store(context,fileName, "databases/" + fileName);
+        Copy.mkdir("css");
+        Copy.store(context,fileName, "css/" + fileName);
         /*InputStream myInput = context.getAssets().open(fileName);
 
         FileOutputStream myOutput = new FileOutputStream(URL+fileName);

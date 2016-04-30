@@ -45,7 +45,7 @@ public class CampusActivity extends BackActivity  {
         }
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        WebFragment.setUrlCategory("file:///data/data/com.example.david.polynews2/databases/campus");
+        WebFragment.setUrlCategory("file:///data/data/com.example.david.polynews2/html/campus/campus");
         WebFragmentPagerAdapter.setCampusTabTitles();
 
         viewPager.setAdapter(new WebFragmentPagerAdapter(getSupportFragmentManager(), CampusActivity.this));
@@ -56,7 +56,9 @@ public class CampusActivity extends BackActivity  {
     }
 
     public void copyCampusFiles() throws IOException{
+
+        Copy.mkdir("html/campus");
         for(int i = 0; i < campushtml.length;i++)
-            Copy.store(this,"html/campus/"+campushtml[i],"databases/"+campushtml[i]);
+            Copy.store(this,"html/campus/"+campushtml[i],"html/campus/"+campushtml[i]);
     }
 }
