@@ -32,7 +32,7 @@ public class URLImage extends AsyncTask<String, Void, Bitmap> {
                 Log.v("URLIMAGE: ", urldisplay);
                 mIcon = BitmapFactory.decodeStream(in);
                 cache.put(urldisplay,mIcon);
-                
+
 
             }
         } catch (Exception e) {

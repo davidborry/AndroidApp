@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import com.example.david.polynews2.twitter.DownloadImage;
+import com.example.david.polynews2.html.media.URLImage;
 import com.example.david.polynews2.R;
 
 /**
@@ -46,8 +46,8 @@ public class TweetListAdapter extends ArrayAdapter<Tweet> {
         //Affichage image
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageTweet);
-        DownloadImage downloadImage = new DownloadImage(imageView);
-        downloadImage.execute(getItem(position).getImageUrl());
+        new URLImage(imageView).execute(getItem(position).getImageUrl());
+
 
         return convertView;
     }
