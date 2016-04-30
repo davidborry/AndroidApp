@@ -43,10 +43,10 @@ public class VideosListFragment extends Fragment {
 
             @Override
             protected void onPostExecute(List<Video> vids) {
-                final VideosCustomAdapter videos = new VideosCustomAdapter(getActivity(), R.id.news_empty);
+                final VideosCustomAdapter videos = new VideosCustomAdapter(getActivity(), R.id.videos_empty);
                 videos.addAll(vids);
-                ((GridView) getActivity().findViewById(R.id.news_grid_layout)).setAdapter(videos);
-                ((GridView) getActivity().findViewById(R.id.news_grid_layout)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                ((GridView) getActivity().findViewById(R.id.videos_grid_layout)).setAdapter(videos);
+                ((GridView) getActivity().findViewById(R.id.videos_grid_layout)).setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Video video = (Video) parent.getItemAtPosition(position);

@@ -18,6 +18,8 @@ public class ProjectsActivity extends BackActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
 
+        getSupportActionBar().setTitle("Projets fin d'études");
+
         try{
             ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager3);
             VideoFragmentPagerAdapter mSectionsPagerAdapter = new VideoFragmentPagerAdapter(getSupportFragmentManager());

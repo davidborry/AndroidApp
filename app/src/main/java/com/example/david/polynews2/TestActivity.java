@@ -8,11 +8,11 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 
-import com.example.david.polynews2.article.Article;
+import com.example.david.polynews2.article.New;
 import com.example.david.polynews2.css.CSSBuilder;
 import com.example.david.polynews2.db.NewsDBHelper;
 import com.example.david.polynews2.fragment.MenuFragment;
-import com.example.david.polynews2.html.parser.HTMLBuilder;
+import com.example.david.polynews2.html.parser.ArticleHTMLBuilder;
 
 public class TestActivity extends BackActivity {
 
@@ -42,12 +42,12 @@ public class TestActivity extends BackActivity {
 
 
         try{
-            Article a =  dbNews.readDataBase().get(0);
+            New a =  dbNews.readDatabase().get(0);
 
             CSSBuilder css = new CSSBuilder(this);
             css.build("article.css");
 
-            HTMLBuilder h = new HTMLBuilder(a,this);
+            ArticleHTMLBuilder h = new ArticleHTMLBuilder(a,this);
 
             h.save("test.html");
             web = (WebView) findViewById(R.id.web);

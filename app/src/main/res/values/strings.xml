@@ -14,4 +14,6 @@
         <item>@drawable/image_8</item>
         <item>@drawable/image_9</item>
     </string-array>
+
+    <string name="title_activity_maps">Hello</string>
 </resources>

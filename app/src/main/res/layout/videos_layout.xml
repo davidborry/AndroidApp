@@ -6,26 +6,20 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/news_thumbnail"
+        android:padding="8dp"
+        android:id="@+id/videos_thumbnail"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:adjustViewBounds="false"
         android:scaleType="centerCrop">
     </ImageView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/news_title"
-        android:layout_below="@id/news_thumbnail"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:textAlignment="center"
+        android:id="@+id/videos_title"
+        android:layout_below="@id/videos_thumbnail"
         />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/news_content"
-        android:layout_below="@+id/news_title" />
 </RelativeLayout>

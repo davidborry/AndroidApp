@@ -10,10 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.david.polynews2.CampusActivity;
+import com.example.david.polynews2.EventsActivity;
+import com.example.david.polynews2.MapsActivity;
 import com.example.david.polynews2.NewsActivity;
 import com.example.david.polynews2.ProjectsActivity;
 import com.example.david.polynews2.R;
 import com.example.david.polynews2.TestActivity;
+import com.example.david.polynews2.TwitterActivity;
 
 /**
  * Created by david on 14/04/2016.
@@ -23,6 +26,9 @@ public class MenuFragment extends Fragment {
     private ImageButton test;
     private ImageButton campusButton;
     private ImageButton newsButton;
+    private ImageButton mapButton;
+    private ImageButton eventButton;
+    private ImageButton twitterButton;
 
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
@@ -47,6 +53,30 @@ public class MenuFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getActivity(), NewsActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    public View.OnClickListener mapClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), MapsActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    public View.OnClickListener eventClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), EventsActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    public View.OnClickListener twitterClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), TwitterActivity.class);
             startActivity(intent);
         }
     };
@@ -83,5 +113,14 @@ public class MenuFragment extends Fragment {
 
         newsButton = (ImageButton) v.findViewById(R.id.newsButton);
         newsButton.setOnClickListener(newsClick);
+
+        mapButton = (ImageButton) v.findViewById(R.id.mapButton);
+        mapButton.setOnClickListener(mapClick);
+
+        eventButton = (ImageButton) v.findViewById(R.id.eventsButton);
+        eventButton.setOnClickListener(eventClick);
+
+        twitterButton = (ImageButton) v.findViewById(R.id.twitterButton);
+        twitterButton.setOnClickListener(twitterClick);
     }
 }

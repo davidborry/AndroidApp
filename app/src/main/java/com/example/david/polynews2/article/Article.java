@@ -3,24 +3,34 @@ package com.example.david.polynews2.article;
 import com.example.david.polynews2.html.media.YoutubeAPI;
 
 /**
- * Created by David on 23/03/16.
+ * Created by david on 22/04/2016.
  */
-public class Article {
-    private int id;
-    private String title;
-    private String body;
-    private String author;
-    private String date;
-    private Category category;
-    private Media media;
-    private String mediaURL;
-    private String iconURL;
+public abstract class Article{
 
+    protected int id;
+    protected String title;
+    protected String body;
+    protected String author;
+    protected String date;
+    protected String mediaURL;
+    protected String iconURL;
     private static final String iconVideo = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Youtube-variation.png";
+
+
+    protected Category category;
+    protected Media media;
 
     public enum Category{
         POLITICS,
-        SOCIETY;
+        SOCIETY,
+        POLYTECH,
+        BDE,
+        BDS,
+        BDM,
+        BDJ,
+        CONFERENCE,
+        DIVERS
+        ;
 
         private int t;
 
@@ -48,9 +58,7 @@ public class Article {
         }
     };
 
-    public Article(int id){
-        this.id = id;
-    }
+    public Article(int id){this.id = id;}
 
     public int getId(){
         return id;
@@ -92,18 +100,21 @@ public class Article {
         this.date = date;
     }
 
+    public String getMediaURL(){
+        return mediaURL;
+    }
+
     public Category getCategory(){
         return category;
     }
 
     public void setCategory(int c){
-        if(c == 1)
-            category = Category.POLITICS;
-        else
-            category = Category.SOCIETY;
-
+        category = Category.DIVERS;
         category.setT(c);
+    }
 
+    public String getIconURL(){
+        return iconURL;
     }
 
     public Media getMedia(){
@@ -118,7 +129,7 @@ public class Article {
         else{
             media = Media.VIDEO;
             //iconURL = iconVideo;
-           iconURL = "http://img.youtube.com/vi/" + YoutubeAPI.getVideoId(url) + "/0.jpg";
+            iconURL = "http://img.youtube.com/vi/" + YoutubeAPI.getVideoId(url) + "/0.jpg";
 
         }
 
@@ -126,16 +137,12 @@ public class Article {
         mediaURL = url;
     }
 
-    public String getMediaURL(){
-        return mediaURL;
-    }
-
-    public String getIconURL(){
-        return iconURL;
-    }
 
     @Override
     public String toString(){
         return author+": "+title+"\n"+body+"\n"+date;
     }
+
+
+
 }
