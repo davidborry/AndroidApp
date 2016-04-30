@@ -15,15 +15,29 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:id="@+id/imageSwitcher" />
-        <Spinner
-            android:id="@+id/home_presentation"
+
+        <Button
+
+            android:text="Presentation"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowRadius="5"
+            android:id="@+id/button"
             android:layout_gravity="center_horizontal"
-            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Base.TextAppearance.AppCompat.Large"
-            android:spinnerMode="dropdown"
-            android:touchscreenBlocksFocus="false" />
+            android:text=""
+            android:id="@+id/content_presentation"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp" />
 
         <TextView
             android:id="@+id/home_galerie"

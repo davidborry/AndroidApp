@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.david.polynews2.adapter.HomeFragmentPagerAdapter;
+import com.example.david.polynews2.fragment.HomeFragment;
 
 /**
  * Created by david on 19/04/2016.
@@ -29,8 +30,5 @@ public class HomeActivity extends AppCompatActivity{
         catch (Exception e){
             Log.e("FRAGMENTERROR: ", e.toString());
         }
-
-
-
     }
 }
