@@ -26,7 +26,8 @@
             android:id="@+id/campusButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/app_campus"/>
+            android:src="@drawable/app_campus"
+            android:background="?android:selectableItemBackground"/>
 
         <TextView
             android:layout_width="wrap_content"

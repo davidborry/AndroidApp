@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.david.polynews2.article.Article;
+import com.example.david.polynews2.article.Event;
 import com.example.david.polynews2.article.New;
 import com.example.david.polynews2.html.media.YoutubeManager;
 import com.example.david.polynews2.window.Dimensions;
@@ -51,16 +52,17 @@ public class ArticleHTMLBuilder {
 
     public void makeBody(){
         content+="<body>\n";
-        content+="<h1 id=\"title\">"+article.getTitle()+"</h1>\n";
-        content+="<h2 id=\"author\">" + article.getAuthor() + "</h2>\n";
-        content+="<p id=\"date\">" + article.getDate() + "</p>\n";
 
-        content+="<div class=\"videoWrapper\">\n";
+        content+="<h1 id=\"title\">" + article.getTitle()+"</h1>\n";
+        content+="<h2 id=\"category\">"+article.getCategory().toString()+"</h2>\n";
+        content+="<h2 id=\"author\">Publié par: " + article.getAuthor() + "</h2>\n";
+        content+="<p id=\"date\">Le " + article.getDate() + "</p>\n";
+
+
         makeMedia();
-        content+="</div>\n";
+
         //content+="<a id=\"media\" href=\""+article.getMedia().getURL()+"\">MEDIA</a>\n";
 
-        content +="<p id=\"category\">"+article.getCategory().toString()+"</p>\n";
         content+="<p id=\"content\">" + article.getBody() + "</p>\n";
         content+="</body>\n";
         Log.v("CONTENTARTICLE:",content);
@@ -68,13 +70,15 @@ public class ArticleHTMLBuilder {
     }
 
     public void makeMedia(){
-        if(article.getMedia() == New.Media.IMAGE){
+        if(article.getMedia() == Event.Media.IMAGE){
             content+="<img width=\"100%\" src=\""+article.getMediaURL()+"\" />\n";
             Log.v("MEDIAURL:",article.getMediaURL());
         }
 
-        else
+        else{
             makeVideo();
+        }
+
     }
 
     public void makeVideo(){
@@ -82,7 +86,9 @@ public class ArticleHTMLBuilder {
 
         if(article.getMedia().getURL().contains("youtube.com")){
 
-            content+= new YoutubeManager(d.getWidth(),d.getHeight(),article.getMediaURL()).getEmbedCode();
+            content+= "<div class=\"videoWrapper\">\n";
+            content+= new YoutubeManager(d.getWidth(),d.getHeight(),article.getMediaURL()).getEmbedCode()+"\n";
+            content+="</div>\n";
         }
     }
 

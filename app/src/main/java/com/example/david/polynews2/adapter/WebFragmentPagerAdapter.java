@@ -44,6 +44,12 @@ public class WebFragmentPagerAdapter extends FragmentPagerAdapter {
     }
 
     public static void setCampusTabTitles(){
+        PAGE_COUNT = 3;
         tabTitles = new String[] {"TEMPLIERS","LEARNING CENTER","LUCIOLES"};
+    }
+
+    public static void setAssosTabTitles(){
+        PAGE_COUNT = 5;
+        tabTitles = new String[] {"BDE","BDS","BDM","BDJ","BDC"};
     }
 }

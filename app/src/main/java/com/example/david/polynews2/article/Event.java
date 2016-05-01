@@ -18,7 +18,33 @@ public class Event extends Article{
     @Override
     public void setCategory(int c){
         super.setCategory(c);
-        this.category = Category.POLITICS;
+
+        switch(c){
+            case 0:
+                this.category = Category.POLYTECH;
+                break;
+            case 1:
+                this.category = Category.BDE;
+                break;
+            case 2:
+                this.category = Category.BDS;
+                break;
+            case 3:
+                this.category = Category.BDM;
+                break;
+            case 4:
+                this.category = Category.BDJ;
+                break;
+            case 5:
+                this.category = Category.CONFERENCE;
+                break;
+            case 6:
+                this.category = Category.APERO;
+                break;
+            default:
+                this.category = Category.DIVERS;
+        }
+
     }
 
     public Location getLocation(){

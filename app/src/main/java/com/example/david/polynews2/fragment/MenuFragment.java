@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.example.david.polynews2.AssosActivity;
 import com.example.david.polynews2.CampusActivity;
 import com.example.david.polynews2.EventsActivity;
 import com.example.david.polynews2.MapsActivity;
@@ -29,6 +30,7 @@ public class MenuFragment extends Fragment {
     private ImageButton mapButton;
     private ImageButton eventButton;
     private ImageButton twitterButton;
+    private ImageButton assosButton;
 
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
@@ -81,6 +83,14 @@ public class MenuFragment extends Fragment {
         }
     };
 
+    public View.OnClickListener assosClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), AssosActivity.class);
+            startActivity(intent);
+        }
+    };
+
     public static MenuFragment newInstance(int page){
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -122,5 +132,8 @@ public class MenuFragment extends Fragment {
 
         twitterButton = (ImageButton) v.findViewById(R.id.twitterButton);
         twitterButton.setOnClickListener(twitterClick);
+
+        assosButton = (ImageButton) v.findViewById(R.id.assosButton);
+        assosButton.setOnClickListener(assosClick);
     }
 }

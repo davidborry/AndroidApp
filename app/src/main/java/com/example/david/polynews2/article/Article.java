@@ -29,6 +29,7 @@ public abstract class Article{
         BDM,
         BDJ,
         CONFERENCE,
+        APERO,
         DIVERS
         ;
 
