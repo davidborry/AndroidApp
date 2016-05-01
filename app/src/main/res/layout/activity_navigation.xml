@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.david.polynews2.MenuActivity">
+    tools:context="com.polytech.si3.mypolytech.MenuActivity">
 
     <FrameLayout>
         <ImageButton

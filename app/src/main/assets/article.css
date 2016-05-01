@@ -31,3 +31,20 @@ h3,h4,#category{
 p{
 	text-align:justify;
 }
+
+
+.left, .right{
+	position:relative;
+	width:50%;
+
+
+}
+.left{
+	float:left;
+	margin-left:15%;
+}
+
+.right{
+	float:right;
+	margin-right:15%;
+}
